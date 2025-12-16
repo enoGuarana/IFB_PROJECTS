@@ -1,929 +1,218 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Restaurante Alves — Cardápio Digital</title>
-    <!-- Fontes Customizadas: Playfair Display (Serif) e Inter (Sans) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <style>
-        /* ==============================
-        Estilos Customizados (Visual Elegante)
-        ============================== */
-        :root {
-            --bg: #f6f3ef;
-            --header-bg: #fffdfa;
-            --card: #fff;
-            --text: #362612;
-            --muted: #a08a6b;
-            --primary: #914231; /* Cor principal - Terracota */
-            --primary-dark: #723122;
-            --accent: #b3935b; /* Cor de destaque - Ouro velho */
-            --shadow: 0 2px 14px rgba(70,40,16,0.08);
-            --radius: 16px;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Headset Synapse X1 - O futuro do áudio com IA e redes neurais.">
+    <title>Synapse X1 | O Futuro do Áudio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    </head>
 
-        /* GLOBAL & TIPOGRAFIA */
-        body {
-            margin: 0;
-            font-family: "Inter", sans-serif; 
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-        }
+<body>
 
-        h1, h2, h3, h4 {
-            font-family: "Playfair Display", serif;
-            margin: 0 0 12px 0;
-        }
-        a { color: var(--primary); text-decoration: none;}
-        a:hover { color: var(--accent); text-decoration: underline; }
-
-        /* LOGO E HERO */
-        .logo-capa {
-            width: 170px;
-            max-width: 90vw;
-            margin-bottom: 22px;
-            margin-top: 20px;
-            display: block;
-            border-radius: 18px;
-            box-shadow: 0 2px 16px #0001;
-            background: #fff;
-        }
-        .hero {
-            width: 100%;
-            min-height: 430px;
-            background: linear-gradient(135deg, var(--header-bg) 0%, #e8e0d3 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 36px 0 26px 0;
-            box-sizing: border-box;
-        }
-        .hero-header {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .hero h1 {
-            font-size: 2.3rem;
-            margin-bottom: 10px;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-dark);
-        }
-        .hero .lead {
-            color: var(--muted);
-            font-size: 1.13rem;
-            margin-bottom: 20px;
-        }
-        .button-group {
-            display: flex; 
-            gap: 15px; 
-            flex-wrap: wrap; 
-            margin-bottom: 20px; 
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 18px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.2s ease;
-        }
-        .btn.primary {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            color: white;
-            box-shadow: 0 8px 20px rgba(145, 66, 49, 0.25); /* Sombra mais visível para o primary */
-        }
-        .btn.ghost {
-            border: 1px solid rgba(0,0,0,0.1);
-            background: transparent;
-            color: var(--text);
-        }
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(183,28,28,0.18);
-        }
-
-        /* CARDÁPIO CONTROLES */
-        .menu-wrap {
-            padding: 38px clamp(16px,6vw,56px);
-            max-width: 1200px;
-            margin: auto;
-        }
-        
-        .menu-controls {
-            padding: 20px;
-            background: var(--header-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 20px; /* Mantém a fixação, dando um respiro no topo */
-            z-index: 10;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        /* Input de Busca */
-        #searchMenu {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid var(--muted);
-            border-radius: 10px;
-            font-size: 1rem;
-            color: var(--text);
-            background-color: var(--card);
-            transition: border-color 0.2s;
-        }
-        #searchMenu:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
-
-        /* Tabs de Filtro */
-        .tabs {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        .tab {
-            flex-shrink: 0;
-            padding: 10px 18px;
-            border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.07);
-            cursor: pointer;
-            background: white;
-            transition: 0.2s ease;
-            font-weight: 500;
-            color: var(--text);
-        }
-        .tab.active {
-            background: var(--accent);
-            border-color: transparent;
-            color: var(--text); /* Mantendo a cor de texto escura para melhor contraste */
-            font-weight: 700;
-        }
-        
-        /* Mensagem de "Nenhum resultado" */
-        #noResults {
-            text-align: center;
-            padding: 40px;
-            background-color: var(--card);
-            border-radius: var(--radius);
-            margin-top: 30px;
-            border: 1px dashed var(--muted);
-            box-shadow: var(--shadow);
-        }
-
-        /* GRID DO CARDÁPIO */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adaptando para responsividade */
-            gap: 20px;
-        }
-        .card {
-            background: var(--card);
-            border-radius: 14px;
-            padding: 18px; /* Aumentei um pouco o padding interno */
-            display: flex;
-            flex-direction: column; /* Garantindo que o preço fique no final */
-            box-shadow: var(--shadow);
-            transition: 0.2s ease;
-            border: 1px solid #f0f0f0;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(70,40,16,0.12);
-        }
-        .card h5 {
-            font-family: "Inter", sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-        .card p {
-            color: var(--muted);
-            font-size: 0.95rem;
-            margin-bottom: 0;
-        }
-        .card.hidden { display: none; }
-        
-        .card-body {
-            flex: 1;
-        }
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px; /* Mais espaço */
-            padding-top: 10px;
-            border-top: 1px solid #eee;
-        }
-        .price {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .add-btn {
-            padding: 8px 14px; /* Aumentei o padding */
-            background: transparent;
-            border: 1px solid var(--primary);
-            border-radius: 10px;
-            cursor: pointer;
-            color: var(--primary);
-            transition: 0.2s ease;
-            font-weight: 600;
-        }
-        .add-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* LOCALIZAÇÃO/ENDEREÇO/HORÁRIO */
-        .section {
-            padding: 48px clamp(16px,6vw,56px);
-        }
-        .location-section {
-            background: linear-gradient(94deg, #fdfbf7 0%, #faf4ec 100%);
-            border-radius: var(--radius);
-            margin: 0 auto 36px auto;
-            box-shadow: var(--shadow);
-            padding: 36px 0;
-            max-width: 1100px;
-        }
-        .location {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-            justify-content: center;
-            max-width: 970px;
-            margin: 0 auto;
-        }
-        .location-info {
-            flex: 2 1 340px;
-            min-width: 260px;
-        }
-        .location-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 9px;
-            color: var(--primary);
-        }
-        .address-link {
-            display: inline-block;
-            color: var(--primary-dark);
-            font-size: 1.08rem;
-            margin-bottom: 13px;
-        }
-        .address-link:before {
-            content: "📍 ";
-            font-size: 1.15em;
-        }
-        .location-info address {
-            font-style: normal;
-            margin-bottom: 7px;
-            color: var(--muted);
-        }
-        .location-info iframe {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px #0001;
-            border: none;
-            margin-top: 12px;
-        }
-        /* Horário */
-        .hours {
-            flex: 1 1 210px;
-            background: #fff;
-            padding: 22px 28px;
-            border-radius: var(--radius);
-            box-shadow: 0 3px 22px #0001;
-            margin-top: 12px;
-            text-align: left;
-            border: 1px solid #e8e0d3;
-            min-width: 160px;
-        }
-        .hours h4 {
-            font-size: 1.17rem;
-            margin-bottom: 14px;
-            color: var(--primary);
-            font-family: "Inter", sans-serif;
-            font-weight: 700;
-        }
-        .hours ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .hours li {
-            margin-bottom: 12px;
-            font-size: 1.05rem;
-            color: #715333;
-            display: flex;
-            justify-content: space-between;
-        }
-        .hours li strong {
-            color: var(--primary-dark);
-            min-width: 93px;
-            display: inline-block;
-        }
-
-        /* SOBRE */
-        .about-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-        }
-        .about-section p {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--text);
-        }
-
-
-        /* FOOTER */
-        footer {
-            background: var(--primary-dark);
-            color: white;
-            padding: 30px 24px;
-            text-align: center;
-        }
-        footer h2 {
-            font-size: 2rem;
-            color: white;
-        }
-        .contact-box p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-        .contact-box i {
-            color: var(--accent);
-            margin-right: 8px;
-        }
-        .copyright {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: #aaa;
-            border-top: 1px solid #333;
-            padding-top: 10px;
-        }
-
-
-        /* RESPONSIVIDADE */
-        @media (max-width: 1000px) {
-            .hero-header {
-                max-width: 99vw;
-                padding: 0 8px;
-            }
-            .menu-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .location {
-                flex-direction: column;
-                gap: 24px;
-                align-items: stretch;
-                max-width: 99vw;
-                padding: 0 8px;
-            }
-            .location-section {
-                margin-left: 10px;
-                margin-right: 10px;
-            }
-            .location-info, .hours {
-                min-width: 0;
-                max-width: 98vw;
-            }
-        }
-        @media (max-width: 650px) {
-            .logo-capa {
-                width: 100px;
-                margin-top: 8px;
-            }
-            .hero h1 { font-size: 1.8rem; }
-            .hero .lead { font-size: 1rem; }
-            .section { padding: 20px 0 14px 0; }
-            .location-info iframe { height: 180px;}
-            .hours { padding: 15px; }
-            .about-section h2 { font-size: 2rem; }
-        }
-        @media (max-width: 600px) {
-            .menu-wrap { padding: 20px 4vw;}
-            .menu-grid { grid-template-columns: 1fr; }
-            .card { padding: 15px; }
-            .section { padding: 15px 0 13px 0;}
-        }
-        
-    </style>
-</head>
-
-<body id="top">
-    
-    <!-- HEADER / HERO SECTION -->
-    <header class="hero">
-        <div class="hero-header">
-<img class="logo-capa" 
-src="img/logo.png" 
-alt="Logo Restaurante Alves">
-            <h1>Restaurante Alves — Cardápio Digital</h1>
-            <p class="lead">Pratos saudáveis, variados e deliciosos — design pensado para desktop, tablet e celular.</p>
-            
-            <div class="button-group">
-                <a class="btn primary" href="#cardapio">
-                    <i class="fa-solid fa-utensils"></i> Ver Cardápio
-                </a>
-                <a class="btn ghost" href="tel:+5561996086487">
-                    <i class="fa-solid fa-phone-volume"></i> Ligar Agora
-                </a>
-            </div>
-            <p class="text-sm text-gray-400">
-                <strong>Avalie no Google:</strong> 
-                <a href="https://www.google.com/search?q=restaurante+alves+ifb" target="_blank">Queremos saber o seu Feedback</a>
-            </p>
-        </div>
+    <header>
+        <div class="logo">SYNAPSE <span class="highlight">X1</span></div>
+        <div class="mobile-menu-icon" onclick="toggleMenu()">☰</div>
+        <nav>
+            <a href="#tecnologia">Tecnologia</a>
+            <a href="#beneficios">Benefícios</a>
+            <a href="#comprar" class="nav-btn">Pré-Venda</a>
+        </nav>
     </header>
 
-    <!-- MENU / CARDÁPIO SECTION -->
-    <main id="cardapio" class="menu-wrap">
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <p class="tagline">POWERED BY NEURAL NETWORKS</p>
+            <h1>Sincronize seu <br><span class="gradient-text">Cérebro.</span></h1>
+            
+            <p class="description">
+                O primeiro headset do mundo que usa <strong>Inteligência Artificial</strong> para ler suas ondas cerebrais e ajustar o áudio em tempo real. Destinado a gamers, programadores e criativos que precisam entrar em <strong>estado de Flow</strong> instantaneamente.
+            </p>
+            
+            <div class="cta-group">
+                <a href="#comprar" class="btn-primary">Garantir Acesso Antecipado</a>
+                <button id="btnDemo" class="btn-secondary" onclick="toggleNeuralSound()">
+                    Ver Demo <span id="iconSound">🔇</span>
+                </button>
+            </div>
+        </div>
         
-        <!-- CONTROLES (Busca + Tabs) -->
-        <div class="menu-controls" id="menuControls">
-            
-            <!-- CAMPO DE BUSCA -->
-            <input 
-                id="searchMenu" 
-                type="text" 
-                placeholder="🔍 Digite para buscar um prato, lanche ou bebida..." 
-            />
-
-            <!-- TABS / FILTROS DE CATEGORIA -->
-            <div id="tabsContainer" class="tabs" role="tablist">
-                <button class="tab active" data-cat="todas">Todas</button>
-                <button class="tab" data-cat="principais">Pratos Principais</button>
-                <button class="tab" data-cat="lanches">Lanches Rápidos</button>
-                <button class="tab" data-cat="bebidas">Bebidas</button>
-                <button class="tab" data-cat="sobremesas">Sobremesas</button>
-            </div>
-        </div>
-
-        <!-- GRID DE ITENS DO CARDÁPIO -->
-        <div class="menu-grid" id="menuGrid">
-            
-            <article class="card" data-cat="principais">
-                <div class="card-body">
-                    <h5>Self Service</h5>
-                    <p>Sirva-se no Buffet</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 42,99/kilo</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="principais">
-                <div class="card-body">
-                    <h5>Self Service Vegetariano</h5>
-                    <p>Prato principal sem carne.</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 33,99/kilo</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="principais">
-                <div class="card-body">
-                    <h5>Proteína</h5>
-                    <p>Valor para apenas carnes e proteínas</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 59,99/kilo</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-                        <article class="card" data-cat="sobremesas">
-                <div class="card-body">
-                    <h5>Sobremesa (Geral)</h5>
-                    <p>Consulte as opções de hoje.</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 54,99/kilo</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="sobremesas">
-                <div class="card-body">
-                    <h5>Bolos simples variados</h5>
-                    <p>Fatia de bolos variados a depender da disponibilidade do dia</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 3,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Salgado Assado</h5>
-                    <p>Opção do dia</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 4,50</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Salgado Vegetariano</h5>
-                    <p>Opção de salgados sem carne</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 4,50</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Pão de Queijo 50g</h5>
-                    <p>Feito na hora e quentinho.</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 2,50</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Salada de Frutas</h5>
-                    <p>Frutas frescas e variadas</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 6,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Mini Pizza</h5>
-                    <p>Mini Pizza (consultar sabores disponíveis)</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 5,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Sanduíche Natural 150g</h5>
-                    <p>Sanduíche Natural Saudável 150g</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 7,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Sanduíche Natural Vegetariano 120g</h5>
-                    <p>Sanduíche Natural Vegetariano Saudável 120g</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 7,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Pão na chapa com manteiga</h5>
-                    <p>pão francês cortado ao meio, passado na manteiga e prensado em uma chapa quente para tostar</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 2,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Misto Simples</h5>
-                    <p>popular e clássico sanduíche brasileiro, conhecido pela sua simplicidade e sabor reconfortante. </p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 5,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Misto Completo</h5>
-                    <p>Variação do clássico misto-quente </p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 7,50</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Queijo Quente</h5>
-                    <p>Simples e clássico, conhecido pelo seu conforto e praticidade</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 5,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Queijo Quente Completo</h5>
-                    <p>Completinho e saboroso</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 7,50</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Unidade de Fruta</h5>
-                    <p>Fruta Fresca, consultar disponibilidade do dia</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 1,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Tapioca com manteiga</h5>
-                    <p>Massa fina de goma de tapioca na frigideira quente adicionada de manteiga</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 4,50</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Tapioca com ovo</h5>
-                    <p>combina a base de carboidratos da tapioca com a proteína do ovo</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 7,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Tapioca presunto e queijo</h5>
-                    <p>lanche popular e saboroso, que combina a textura leve e crocante da massa de tapioca com o recheio clássico de queijo derretido e presunto </p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 9,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Tapioca presunto, queijo e ovo</h5>
-                    <p>opção de refeição saborosa, rápida e nutritiva, ideal para o café da manhã, lanche ou janta</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 11,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Cuzcuz Simples</h5>
-                    <p>o tradicional, feito apenas com flocos de milho, água e sal, e cozido no vapor </p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 3,75</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Cuzcuz com ovo</h5>
-                    <p>Prato clássico, reconfortante e muito popular no Brasil</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 3,75</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Cuzcuz presunto e queijo</h5>
-                    <p>Consiste em uma massa de flocos de milho cozida no vapor, com camadas de presunto e queijo mussarela </p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 3,75</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Cuzcuz presunto, queijo e ovo</h5>
-                    <p>Refeição robusta e saborosa, que combina a textura única do cuscuz de milho com um recheio clássico e proteico</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 3,75</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="lanches">
-                <div class="card-body">
-                    <h5>Cuzcuz com manteiga</h5>
-                    <p>Prato de textura macia e sabor aconchegante, que se destaca pela simplicidade e pelo conforto que proporciona</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 4,50</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="bebidas">
-                <div class="card-body">
-                    <h5>Suco Natural</h5>
-                    <p>Suco de Frutas natural de 300ml feito na hora</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 6,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="bebidas">
-                <div class="card-body">
-                    <h5>Café Puro 50ml</h5>
-                    <p>Expresso forte.</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 2,50</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="bebidas">
-                <div class="card-body">
-                    <h5>Café com Leite 50ml</h5>
-                    <p>Clássico e cremoso.</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 3,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="bebidas">
-                <div class="card-body">
-                    <h5>Leite com Chocolate 100ml</h5>
-                    <p>conhecido pelo sabor clássico</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 3,50</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
-            <article class="card" data-cat="bebidas">
-                <div class="card-body">
-                    <h5>Vitamina</h5>
-                    <p>Deliciosa vitamina de Frutas 300ml</p>
-                </div>
-                <div class="price-row">
-                    <span class="price">R$ 6,00</span>
-                    <button class="add-btn">Adicionar</button>
-                </div>
-            </article>
- 
-    </main>
-    
-    <!-- LOCATION SECTION -->
-    <section class="location-section" id="localizacao">
-        <div class="location">
-            <div class="location-info">
-                <h3>Nosso Endereço</h3>
-                <a class="address-link"
-                   href="https://www.google.com/search?sca_esv=18637f1ce6371d1f&q=restaurante+alves+bras%C3%ADlia+endere%C3%A7o&ludocid=2699611337530544535&sa=X&ved=2ahUKEwiPxNCFzIGRAxUnp5UCHcduD_gQ6BN6BAgzEAI"
-                   target="_blank">
-                    Setor de Grandes Áreas Norte 610 - Asa Norte, Brasília - DF, 70830-450
-                </a>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6143.894782755937!2d-47.880568123257694!3d-15.757885187825518!2m3!1f0!2f0!1f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3a306eeaf0a5%3A0x2576f23555201197!2sRestaurante%20Alves%20-%20SGAN%20610!5e0!3m2!1spt-BR!2sbr!4v1703002210802!5m2!1spt-BR!2sbr"
-                    width="100%"
-                    height="230"
-                    loading="lazy"
-                    allowfullscreen></iframe>
-            </div>
-            <aside class="hours">
-                <h4>Horário de funcionamento</h4>
-                <ul>
-                    <li>
-                        <strong>Seg a Sex:</strong>
-                        <span>7h30 às 20h30</span>
-                    </li>
-                    <li>
-                        <strong>Sáb e Dom:</strong>
-                        <span style="color: var(--primary);">Fechado</span>
-                    </li>
-                </ul>
-            </aside>
+        <div class="hero-image fade-in-delay">
+            <img src="fone.jpg" alt="Headset Synapse X1 flutuando com luzes neon">
+            <div class="glow-effect"></div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="section about-section" id="sobre">
-        <h2>Sobre o Restaurante Alves</h2>
-        <p>O Restaurante Alves, localizado no Instituto Federal de Brasília (IFB), é conhecido por oferecer refeições de alta qualidade a preços acessíveis. Com um cardápio diversificado que inclui opções vegetarianas e veganas, o restaurante atende às necessidades de todos os clientes. Nosso compromisso é proporcionar uma experiência gastronômica agradável, com pratos preparados com ingredientes frescos e um atendimento acolhedor.</p>
+    <section id="beneficios" class="features-bar">
+        <div class="feature-item">
+            <span class="icon">🧠</span>
+            <div class="feature-text">
+                <h3>Sensores EEG</h3>
+                <small>Leitura neural precisa</small>
+            </div>
+        </div>
+        <div class="feature-item">
+            <span class="icon">⚡</span>
+            <div class="feature-text">
+                <h3>Latência Zero</h3>
+                <small>Resposta em milissegundos</small>
+            </div>
+        </div>
+        <div class="feature-item">
+            <span class="icon">🤖</span>
+            <div class="feature-text">
+                <h3>IA Adaptativa</h3>
+                <small>Aprende com você</small>
+            </div>
+        </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer id="contato">
-        <section class="section">
-            <h2 class="text-2xl font-bold mb-4 text-center">Fale Conosco</h2>
-            <div class="contact-box text-center mb-6">
-                <p class="text-xl"><i class="fa-solid fa-phone mr-2"></i> <strong>(61) 99608-6487</strong></p>
+    <section id="tecnologia" class="tech-section">
+        <div class="audio-player-container" style="border: 1px solid var(--primary); padding: 20px; border-radius: 10px; margin-bottom: 20px; background: rgba(0,0,0,0.5);">
+            <p style="color: var(--primary); font-family: 'Orbitron'; margin-bottom: 10px;">Status da Rede Neural:</p>
+            <div id="statusText" style="color: #fff; font-size: 0.9rem;">Aguardando conexão...</div>
+            <div class="bar-container" style="display: flex; gap: 5px; height: 30px; margin-top: 10px; align-items: flex-end;">
+                <div class="anim-bar" style="width: 20%; background: var(--secondary); animation: pulse 0.5s infinite alternate;"></div>
+                <div class="anim-bar" style="width: 20%; background: var(--primary); animation: pulse 0.7s infinite alternate;"></div>
+                <div class="anim-bar" style="width: 20%; background: var(--accent); animation: pulse 0.3s infinite alternate;"></div>
+                <div class="anim-bar" style="width: 20%; background: var(--primary); animation: pulse 0.6s infinite alternate;"></div>
             </div>
-        </section>
-        <p class="copyright">
-            João Enomoto 2025 - Todos os direitos reservados.
-        </p>
+        </div>
+
+        <div class="tech-text">
+            <h2>Como funciona a <span class="highlight">Rede Neural?</span></h2>
+            <p>Diferente de fones comuns, o <strong>Synapse X1</strong> processa dados biométricos em três etapas:</p>
+            <ul class="tech-list">
+                <li><strong>1. Leitura:</strong> Sensores secos captam micro-voltagens no córtex auditivo.</li>
+                <li><strong>2. Processamento:</strong> A NPU analisa níveis de estresse e foco.</li>
+                <li><strong>3. Adaptação:</strong> A IA ajusta frequências binaurais para induzir concentração.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">SYNAPSE LABS</div>
+                <p>© 2025 NeuroTech Industries.<br>Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <a href="mailto:suporte@synapse.com">suporte@synapse.com</a>
+                <a href="#">+55 (61) 9999-9999</a>
+            </div>
+            <div class="footer-col socials">
+                <h4>Social</h4>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter/X</a>
+                <a href="#">Discord</a>
+            </div>
+        </div>
     </footer>
 
-    <!-- JAVASCRIPT PARA FILTRO E BUSCA -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabs = document.querySelectorAll('.tab');
-            const searchInput = document.getElementById('searchMenu');
-            const menuCards = document.querySelectorAll('.card');
-            const noResultsMessage = document.getElementById('noResults');
+        // 1. Script do Menu Mobile
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
+        }
 
-            let activeCategory = 'todas'; // Categoria inicial: todas
+        // 2. Script do Gerador de Som Neural (Web Audio API)
+        let audioCtx;
+        let oscillatorL, oscillatorR;
+        let gainNode;
+        let isPlaying = false;
 
-            /**
-             * Função principal para filtrar e buscar itens no cardápio.
-             */
-            const filterMenu = () => {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-                let resultsFound = false;
+        function toggleNeuralSound() {
+            const btn = document.getElementById('btnDemo');
+            const icon = document.getElementById('iconSound');
+            const status = document.getElementById('statusText');
 
-                menuCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-cat');
-                    const cardText = card.textContent.toLowerCase();
+            if (!isPlaying) {
+                // Iniciar Áudio
+                startBinauralBeats();
+                isPlaying = true;
+                btn.innerHTML = "Parar Demo <span id='iconSound'>🔊</span>";
+                btn.style.boxShadow = "0 0 20px var(--primary)";
+                status.innerText = "⚡ SINCRONIZANDO ONDAS ALFA (10Hz)...";
+                status.style.color = "var(--primary)";
+            } else {
+                // Parar Áudio
+                stopBinauralBeats();
+                isPlaying = false;
+                btn.innerHTML = "Ver Demo <span id='iconSound'>🔇</span>";
+                btn.style.boxShadow = "none";
+                status.innerText = "Sistema em repouso.";
+                status.style.color = "#fff";
+            }
+        }
 
-                    // 1. FILTRO DE CATEGORIA
-                    const categoryMatch = (activeCategory === 'todas' || cardCategory === activeCategory);
-                    
-                    // 2. FILTRO DE BUSCA (Busca no título, descrição e preço)
-                    const searchMatch = cardText.includes(searchTerm);
+        function startBinauralBeats() {
+            // Cria o contexto de áudio se não existir
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
 
-                    // O card deve ser visível se AMBOS os filtros corresponderem
-                    if (categoryMatch && searchMatch) {
-                        card.classList.remove('hidden');
-                        resultsFound = true;
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
+            // Cria o volume geral
+            gainNode = audioCtx.createGain();
+            gainNode.gain.value = 0.1; // Volume baixo (10%) para ser ambiente
+            gainNode.connect(audioCtx.destination);
 
-                // Mostra a mensagem de "Nenhum resultado" se necessário
-                if (resultsFound) {
-                    noResultsMessage.classList.add('hidden');
-                } else {
-                    noResultsMessage.classList.remove('hidden');
-                }
-            };
+            // Oscilador Esquerdo (200Hz)
+            oscillatorL = audioCtx.createOscillator();
+            oscillatorL.type = 'sine'; // Onda senoidal (suave)
+            oscillatorL.frequency.setValueAtTime(200, audioCtx.currentTime); // Base
+            
+            // Pan para Esquerda
+            const pannerL = audioCtx.createStereoPanner();
+            pannerL.pan.value = -1;
+            oscillatorL.connect(pannerL);
+            pannerL.connect(gainNode);
 
-            // 1. Event Listeners para as TABS (Filtro por Categoria)
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Atualiza a categoria ativa
-                    activeCategory = tab.getAttribute('data-cat');
+            // Oscilador Direito (210Hz) -> A diferença de 10Hz cria a onda Alfa
+            oscillatorR = audioCtx.createOscillator();
+            oscillatorR.type = 'sine';
+            oscillatorR.frequency.setValueAtTime(210, audioCtx.currentTime); // +10Hz
+            
+            // Pan para Direita
+            const pannerR = audioCtx.createStereoPanner();
+            pannerR.pan.value = 1;
+            oscillatorR.connect(pannerR);
+            pannerR.connect(gainNode);
 
-                    // Remove a classe 'active' de todas as tabs
-                    tabs.forEach(t => t.classList.remove('active'));
-                    
-                    // Adiciona a classe 'active' à tab clicada
-                    tab.classList.add('active');
+            // Efeito "Start Up" (Varredura de frequência)
+            oscillatorL.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 1);
+            oscillatorR.frequency.exponentialRampToValueAtTime(210, audioCtx.currentTime + 1);
+            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.3, audioCtx.currentTime + 2); // Fade in
 
-                    // Aplica o novo filtro
-                    filterMenu();
-                });
-            });
+            // Start
+            oscillatorL.start();
+            oscillatorR.start();
+        }
 
-            // 2. Event Listener para o Input de Busca (Filtro por Texto)
-            searchInput.addEventListener('input', filterMenu);
-
-            // Filtro inicial ao carregar a página
-            filterMenu(); 
-        });
+        function stopBinauralBeats() {
+            if (oscillatorL) {
+                // Fade out suave para não dar estalo
+                gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+                setTimeout(() => {
+                    oscillatorL.stop();
+                    oscillatorR.stop();
+                }, 500);
+            }
+        }
     </script>
+    
+    <style>
+        /* Adicione isso se quiser animar as barras do player falso */
+        @keyframes pulse {
+            0% { height: 20%; opacity: 0.5; }
+            100% { height: 100%; opacity: 1; }
+        }
+        .anim-bar {
+            border-radius: 2px;
+        }
+    </style>
 </body>
 </html>
