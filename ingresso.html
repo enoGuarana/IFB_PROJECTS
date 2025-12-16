@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar Ingresso - Cinekids</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="imagens/cinekids.jpg" alt="Cinekids Logo">
+        </div>
+        <h1>Cinekids</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cartaz.html">Em Cartaz</a></li>
+            <li><a href="loja.html">Loja</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="container py-5">
+        <h1 class="text-center mb-5" id="movie-title">Carregando Filme...</h1>
+        
+        <section class="purchase-flow">
+            <div class="row">
+                <div class="col-lg-7">
+                    
+                    <h2 class="section-title mb-3">1. Selecione seus assentos</h2>
+                    <div class="seat-selection card p-3 mb-4">
+                        <div class="screen text-center bg-dark text-white p-2 mb-3 rounded">TELA</div>
+                        <div class="seat-grid d-flex flex-wrap justify-content-center mb-3">
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">A1</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">A2</div>
+                            <div class="seat occupied m-1 p-2 border rounded text-center bg-danger text-white" style="width: 40px; height: 40px;">A3</div>
+                            <div class="seat occupied m-1 p-2 border rounded text-center bg-danger text-white" style="width: 40px; height: 40px;">A4</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">A5</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">A6</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">B1</div>
+                            <div class="seat selected m-1 p-2 border rounded text-center bg-success text-white" style="width: 40px; height: 40px;">B2</div>
+                            <div class="seat selected m-1 p-2 border rounded text-center bg-success text-white" style="width: 40px; height: 40px;">B3</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">B4</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">B5</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">B6</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">C1</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">C2</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">C3</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">C4</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">C5</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">C6</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">D1</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">D2</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">D3</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">D4</div>
+                            <div class="seat occupied m-1 p-2 border rounded text-center bg-danger text-white" style="width: 40px; height: 40px;">D5</div>
+                            <div class="seat m-1 p-2 border rounded text-center" style="width: 40px; height: 40px;">D6</div>
+                        </div>
+                        <ul class="seat-legend list-unstyled d-flex justify-content-center gap-4">
+                            <li><div class="seat d-inline-block border rounded me-2" style="width: 20px; height: 20px;"></div> Disponível</li>
+                            <li><div class="seat selected d-inline-block bg-success rounded me-2" style="width: 20px; height: 20px;"></div> Selecionado</li>
+                            <li><div class="seat occupied d-inline-block bg-danger rounded me-2" style="width: 20px; height: 20px;"></div> Ocupado</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="combo-offer mt-4">
+                        <h2 class="section-title mb-3">2. Turbine sua experiência!</h2>
+                        <div class="row row-cols-2 row-cols-md-4 g-3">
+                            <div class="col">
+                                <div class="card h-100 text-center">
+                                    <img src="imagens/combo.jpeg" class="card-img-top" alt="Combo Clássico">
+                                    <div class="card-body p-2">
+                                        <h4 class="card-title fs-6">Combo Clássico</h4>
+                                        <p class="card-text fw-bold text-primary">R$ 35,00</p>
+                                        <button class="btn btn-secondary btn-sm w-100">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100 text-center">
+                                    <img src="imagens/pipoca.doce.jpg" class="card-img-top" alt="Pipoca Doce">
+                                    <div class="card-body p-2">
+                                        <h4 class="card-title fs-6">Pipoca Doce G</h4>
+                                        <p class="card-text fw-bold text-primary">R$ 28,00</p>
+                                        <button class="btn btn-secondary btn-sm w-100">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100 text-center">
+                                    <img src="imagens/pote-pipoca-2x.webp" class="card-img-top" alt="Balde Colecionável">
+                                    <div class="card-body p-2">
+                                        <h4 class="card-title fs-6">Balde Colecionável</h4>
+                                        <p class="card-text fw-bold text-primary">R$ 45,00</p>
+                                        <button class="btn btn-secondary btn-sm w-100">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100 text-center">
+                                    <img src="imagens/agua.webp" class="card-img-top" alt="Água Mineral">
+                                    <div class="card-body p-2">
+                                        <h4 class="card-title fs-6">Água Mineral</h4>
+                                        <p class="card-text fw-bold text-primary">R$ 6,00</p>
+                                        <button class="btn btn-secondary btn-sm w-100">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 mt-4 mt-lg-0">
+                    <h2 class="section-title mb-3">3. Pagamento e Confirmação</h2>
+                    <div class="card p-4 shadow-sm">
+                        <form action="comprar.php" method="post">
+                            <fieldset class="border p-3 mb-3 rounded">
+                                <legend class="float-none w-auto px-1 fs-6">Seus Dados</legend>
+                                <div class="mb-3">
+                                    <label for="nome_compra" class="form-label">Nome Completo:</label>
+                                    <input type="text" class="form-control" id="nome_compra" name="nome_compra" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email_compra" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email_compra" name="email_compra" required>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="border p-3 mb-3 rounded">
+                                <legend class="float-none w-auto px-1 fs-6">Forma de Pagamento</legend>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="pagamento" id="pagamentoCartao" value="cartao" checked>
+                                    <label class="form-check-label" for="pagamentoCartao">Cartão de Crédito</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="pagamento" id="pagamentoPix" value="pix">
+                                    <label class="form-check-label" for="pagamentoPix">PIX</label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset id="dados-cartao" class="border p-3 mb-3 rounded">
+                                <legend class="float-none w-auto px-1 fs-6">Dados do Cartão</legend>
+                                <div class="mb-3">
+                                    <label for="bandeira" class="form-label">Bandeira:</label>
+                                    <select id="bandeira" name="bandeira" class="form-select" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="visa">Visa</option>
+                                        <option value="mastercard">Mastercard</option>
+                                        <option value="elo">Elo</option>
+                                        <option value="amex">American Express</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="numerocartao" class="form-label">Número do Cartão:</label>
+                                    <input type="text" class="form-control" id="numerocartao" name="numerocartao" placeholder="0000.0000.0000.0000" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nomecartao" class="form-label">Nome no Cartão:</label>
+                                    <input type="text" class="form-control" id="nomecartao" name="nomecartao" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <label for="validade" class="form-label">Validade:</label>
+                                        <input type="text" class="form-control" id="validade" name="validade" placeholder="MM/AA" required>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label for="codigocartao" class="form-label">CVV:</label>
+                                        <input type="text" class="form-control" id="codigocartao" name="codigocartao" placeholder="000" required>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+                            <div id="dados-pix" class="pix-container text-center p-3 mb-3 rounded border bg-light" style="display: none;">
+                                <p class="lead">Pague com PIX escaneando o QR Code.</p>
+                                <img src="imagens/qrcode-placeholder.png" alt="QR Code para pagamento PIX" class="pix-qrcode img-fluid mb-3" style="max-width: 150px;">
+                                <label for="pix-codigo" class="form-label">Ou copie o código:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="pix-codigo" value="00020126580...chavepixaleatoria...5913" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('pix-codigo').value)">Copiar</button>
+                                </div>
+                            </div>
+                            
+                            <div class="order-summary p-3 bg-light rounded mb-4">
+                                <h3>Resumo do Pedido</h3>
+                                <p class="d-flex justify-content-between">Ingressos: <span id="resumo-ingressos-valor">R$ 0,00</span></p>
+                                <p class="d-flex justify-content-between">Itens Adicionais: <span id="resumo-combos-valor">R$ 0,00</span></p>
+                                <hr>
+                                <p class="total d-flex justify-content-between fw-bold fs-5">Total: <strong id="preco-total">R$ 0,00</strong></p>
+                            </div>
+                            
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end action-buttons">
+                                <a href="cartaz.html" class="btn btn-secondary">Alterar Filme</a>
+                                <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo-footer">
+            <img src="imagens/cinekids.jpg" alt="Cinekids Logo Rodapé">
+        </div>
+        <p>&copy; 2025 Cinekids. Todos os direitos reservados.</p>
+        <p>Criado com amor para a diversão das crianças!</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script>
+        document.querySelectorAll('input[name="pagamento"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const isCartao = this.value === 'cartao';
+                document.getElementById('dados-cartao').style.display = isCartao ? 'block' : 'none';
+                document.getElementById('dados-pix').style.display = isCartao ? 'none' : 'block';
+            });
+        });
+
+        // Script para carregar dados do filme e atualizar preços (Sem alteração do original)
+        document.addEventListener('DOMContentLoaded', function() {
+            const dadosFilmes = {
+                'baleia-dancaraina': { titulo: 'A Baleia Dançarina', preco: 25.00 },
+                'misterio-floresta': { titulo: 'O Mistério da Floresta Encantada', preco: 28.00 },
+                'amigos-espaciais': { titulo: 'Super Amigos Espaciais', preco: 26.00 },
+                'cidade-robos': { titulo: 'A Cidade dos Robôs', preco: 24.00 }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const idDoFilme = urlParams.get('filme'); 
+            const filmeEscolhido = dadosFilmes[idDoFilme];
+
+            const tituloDaPagina = document.getElementById('movie-title');
+            const resumoIngressosValor = document.getElementById('resumo-ingressos-valor');
+            const precoTotal = document.getElementById('preco-total');
+
+            const numeroDeIngressos = 2; // Exemplo fixo
+            const precoCombosAdicionais = 0; // Exemplo fixo
+
+            if (filmeEscolhido) {
+                const precoDosIngressos = filmeEscolhido.preco * numeroDeIngressos;
+                const valorTotal = precoDosIngressos + precoCombosAdicionais;
+
+                tituloDaPagina.textContent = filmeEscolhido.titulo;
+                resumoIngressosValor.textContent = `R$ ${precoDosIngressos.toFixed(2).replace('.', ',')}`;
+                precoTotal.textContent = `R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
+            } else {
+                tituloDaPagina.textContent = "Nenhum filme selecionado";
+                resumoIngressosValor.textContent = 'R$ 0,00';
+                precoTotal.textContent = 'R$ 0,00';
+            }
+        });
+    </script>
+</body>
+</html>
